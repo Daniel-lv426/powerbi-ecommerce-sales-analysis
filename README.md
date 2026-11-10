@@ -22,5 +22,71 @@ Dashboard stworzony w Power BI, służący do analizy wyników sprzedażowych or
 - **Wskaźnik Anulacji:** Ogólna średnia dla sklepu to 20,00%.
 - **Wykryte Ryzyko:** W kategorii *Opakowania* wskaźnik anulacji wynosi aż 26,67%, co wskazuje na potencjalne problemy w procesie pakowania lub dostępności tego asortymentu i wymaga dalszej weryfikacji.
 
+## Utworzone miary DAX:
+
+**Liczba Zamówień:**
+```dax
+Liczba Zamówień = 
+COUNTROWS(Fakty_Zamowienia)
+```
+**Łączna Wartość_Brutto:**
+```dax
+Łączna Wartość_Brutto = 
+SUM(Fakty_Zamowienia[Wartosc_Brutto])
+```
+**Średnia Wartość_Brutto Koszyka:**
+```dax
+Średnia Wartość_Brutto Koszyka = 
+AVERAGE(Fakty_Zamowienia[Wartosc_Brutto])
+```
+**Top Produkty w Kategoriach:**
+```dax
+Top Produkty w Kategoriach = 
+VAR TopProdukt = CONCATENATEX(TOPN(1, ALL(Wymiar_Produkty[Nazwa_Produktu]), [Wartość_Brutto Zamówienia Zrealizowane], DESC), Wymiar_Produkty[Nazwa_Produktu], ", ")
+VAR Wartosc = [Wartość_Brutto Zamówienia Zrealizowane]
+RETURN
+IF(ISBLANK(Wartosc) || Wartosc = 0, BLANK(), TopProdukt)
+```
+**Wartość_Brutto Zamówienia Zrealizowane:**
+```dax
+Wartość_Brutto Zamówienia Zrealizowane = 
+VAR WartoscZrealizowana = CALCULATE([Łączna Wartość_Brutto], Fakty_Zamowienia[Status] = "Zrealizowane")
+RETURN
+IF(ISBLANK(WartoscZrealizowana), 0, WartoscZrealizowana)
+```
+**Wskaźnik Anulacji:**
+```dax
+Wskaźnik Anulacji = 
+VAR LiczbaZamowienAnulowanych = CALCULATE([Liczba Zamówień], Fakty_Zamowienia[Status] = "Anulowane")
+VAR WszystkieZamowienia = CALCULATE([Liczba Zamówień], REMOVEFILTERS(Fakty_Zamowienia[Status]))
+RETURN
+DIVIDE(LiczbaZamowienAnulowanych, WszystkieZamowienia, 0)
+```
+**Kalendarz:**
+```dax
+Kalendarz = 
+VAR MinData = MIN(Fakty_Zamowienia[Data_Zamowienia])
+VAR MaxData = MAX(Fakty_Zamowienia[Data_Zamowienia])
+VAR MinRok = YEAR(MinData)
+VAR MaxRok = YEAR(MaxData)
+RETURN
+CALENDAR(DATE(MinRok, 1, 1), DATE(MaxRok, 12, 31))
+```
+**Dzień Miesiąca:**
+```dax
+Dzień Miesiąca = 
+DAY(Kalendarz[Date])
+```
+**Miesiąc Nazwa:**
+```dax
+Miesiąc Nazwa = 
+FORMAT(Kalendarz[Date], "mmmm")
+```
+**Miesiąc Nr:**
+```dax
+Miesiąc Nr = 
+MONTH(Kalendarz[Date])
+```
+
 ## Zawartość Repozytorium
 - Pełny plik raportu Power BI gotowy do pobrania i sprawdzenia.

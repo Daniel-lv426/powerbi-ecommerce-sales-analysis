@@ -90,3 +90,14 @@ MONTH(Kalendarz[Date])
 
 ## Zawartość Repozytorium
 - Pełny plik raportu Power BI gotowy do pobrania i sprawdzenia.
+
+### Zrzuty ekranu z projektu:
+
+#### Podgląd raportu
+<img width="1307" height="742" alt="zrzut_ekranu_podglad_raportu" src="https://github.com/user-attachments/assets/44e8f235-7667-4273-92ad-9e7884fc3091" />
+
+#### Model danych (relacje)
+<img width="1309" height="801" alt="zrzut_ekranu_relacje" src="https://github.com/user-attachments/assets/1511f5f9-a5b1-443e-8ca9-1ac29dea8011" />
+
+
+

@@ -1,6 +1,6 @@
 # E-Commerce Sales & Cancellation Analysis (Power BI)
 
-## Dashboard stworzony w Power BI, służący do analizy wyników sprzedażowych oraz wskaźnika anulacji zamówień w e-commerce. Projekt skupia się na transformacji i czyszczeniu danych transakcyjnych pochodzących z systemu ERP, poprawnym modelowaniu relacji oraz budowie miar w języku DAX.
+Dashboard stworzony w Power BI, służący do analizy wyników sprzedażowych oraz wskaźnika anulacji zamówień w e-commerce. Projekt skupia się na transformacji i czyszczeniu danych transakcyjnych pochodzących z systemu ERP, poprawnym modelowaniu relacji oraz budowie miar w języku DAX.
 
 ## Zakres prac i Architektura Modelu
 - **ETL & Czyszczenie danych (Power Query):**

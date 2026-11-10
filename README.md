@@ -93,6 +93,9 @@ MONTH(Kalendarz[Date])
 
 ### Zrzuty ekranu z projektu:
 
+#### Podgląd ETL
+<img width="1898" height="823" alt="zrzut_ekranu_pq" src="https://github.com/user-attachments/assets/bb5adefa-2723-451a-81bb-b484ccc7befd" />
+
 #### Podgląd raportu
 <img width="1307" height="742" alt="zrzut_ekranu_podglad_raportu" src="https://github.com/user-attachments/assets/44e8f235-7667-4273-92ad-9e7884fc3091" />
 
